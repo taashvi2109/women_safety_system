@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #6a5acd, #8a2be2);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 85%;
+            margin: auto;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #6a5acd;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #6a5acd;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a4ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>All Users</h2>
+
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+    </tr>
+
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>{{ row[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="back">
+    <a href="/admin_dashboard">
+        <button>⬅ Back to Dashboard</button>
+    </a>
+</div>
+
+</body>
+</html>

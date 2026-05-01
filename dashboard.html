@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Women Safety</h2>
+
+    <a href="/dashboard">🏠 Dashboard</a>
+    <a href="/users">👤 Users</a>
+    <a href="/complaint">📝 Register Complaint</a>
+    <a href="/view">📄 View Complaints</a>
+    <a href="/officers">👮 Officers</a>
+    <a href="/assign">📌 Assign Complaint</a>
+    <a href="/feedback">⭐ Give Feedback</a>
+    <a href="/logout">🚪 Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <h1>Dashboard</h1>
+    <p>Welcome to Women Safety System</p>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Complaints</h3>
+            <p>{{ total }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Pending</h3>
+            <p>{{ pending }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Resolved</h3>
+            <p>{{ resolved }}</p>
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <!-- QUICK ACTIONS -->
+    <div class="card" style="background:#2ecc71;">
+        <h2>Quick Actions</h2>
+
+        <a href="/complaint">
+            <button>Register Complaint</button>
+        </a>
+
+        <a href="/view">
+            <button>View Complaints</button>
+        </a>
+            <a href="/users">
+            <button>users</button>
+            </a> 
+            <a href="/officers">
+            <button>Officers</button>
+        </a>
+
+        <a href="/assign">
+            <button>Assign</button>
+        </a>
+        <a href="/feedback">
+            <button>Give Feedback</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

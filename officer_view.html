@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assigned Complaints</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #6a5acd, #8a2be2);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #6a5acd;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            background: #6a5acd;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a4ccc;
+        }
+
+        .done {
+            color: green;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Assigned Complaints</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+
+        <!-- STATUS COLORS -->
+        <td>
+            {% if row[2] == 'Pending' %}
+                <span style="color:red;">🔴 Pending</span>
+            {% elif row[2] == 'In Progress' %}
+                <span style="color:orange;">🟡 In Progress</span>
+            {% else %}
+                <span style="color:green;">🟢 Resolved</span>
+            {% endif %}
+        </td>
+
+        <td>{{ row[3] }}</td>
+
+        <td>
+            {% if row[2] != 'Resolved' %}
+                <a href="/resolve/{{ row[0] }}">
+                    <button>Resolve</button>
+                </a>
+            {% else %}
+                <span class="done">✔ Done</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="back">
+    <a href="/officer_dashboard">
+        <button>⬅ Back to Dashboard</button>
+    </a>
+</div>
+
+</body>
+</html>

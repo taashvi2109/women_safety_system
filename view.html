@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaints</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #6a5acd, #8a2be2);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+        }
+
+        table {
+            width: 90%;
+            margin: auto;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #6a5acd;
+            color: white;
+        }
+
+        button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 5px;
+            background: #6a5acd;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a4ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Complaints</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Officer</th>
+        <th>Description</th>
+
+        {% if session['role'] == 'officer' %}
+        <th>Action</th>
+        {% endif %}
+    </tr>
+
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+
+        <!-- STATUS COLORS -->
+        <td>
+            {% if row[2] == 'Pending' %}
+                <span style="color:red;">🔴 Pending</span>
+
+            {% elif row[2] == 'In Progress' %}
+                <span style="color:orange;">🟡 In Progress</span>
+
+            {% else %}
+                <span style="color:green;">🟢 Resolved</span>
+            {% endif %}
+        </td>
+
+        <td>{{ row[3] }}</td>
+        <td>{{ row[4] }}</td>
+
+        {% if session['role'] == 'officer' %}
+        <td>
+            <a href="/resolve/{{ row[0] }}">
+                <button>Resolve</button>
+            </a>
+        </td>
+        {% endif %}
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
